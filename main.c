@@ -3,7 +3,7 @@
 #include <string.h>
 #define N 50
 
-// Структура для зберігання контактної інформації
+// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ Р·Р±РµСЂС–РіР°РЅРЅСЏ РєРѕРЅС‚Р°РєС‚РЅРѕС— С–РЅС„РѕСЂРјР°С†С–С—
 typedef struct { 
 	int num;
 	char phoneNumber[N];
@@ -14,9 +14,9 @@ typedef struct {
 	char email[N];
 }Contact;
 Contact* memory(int);
-FILE* fp; // Вказівник на файл
+FILE* fp; // Р’РєР°Р·С–РІРЅРёРє РЅР° С„Р°Р№Р»
 
-// Службові функції
+// РЎР»СѓР¶Р±РѕРІС– С„СѓРЅРєС†С–С—
 void infomemory(Contact* Contacts);
 int openFile(const char[], const char[]);
 int scanContact(Contact* Contacts, char pytfiles[], int luk);
@@ -28,7 +28,7 @@ int deleteContact(Contact* Contacts, int coun, char pytfiles[]);
 void searchContact(Contact* Contacts, int coun);
 void sortContact(Contact* Contacts, int coun);
 
-// Функція виділення пам'яті для масиву контактів
+// Р¤СѓРЅРєС†С–СЏ РІРёРґС–Р»РµРЅРЅСЏ РїР°Рј'СЏС‚С– РґР»СЏ РјР°СЃРёРІСѓ РєРѕРЅС‚Р°РєС‚С–РІ
 Contact* memory(int luk) {
 	Contact* massive = (Contact*)malloc(luk * sizeof(Contact));
 	if (massive == NULL) {
@@ -40,25 +40,25 @@ Contact* memory(int luk) {
 	}
 }
 
-// Функція для перевірки виділення пам'яті
+// Р¤СѓРЅРєС†С–СЏ РґР»СЏ РїРµСЂРµРІС–СЂРєРё РІРёРґС–Р»РµРЅРЅСЏ РїР°Рј'СЏС‚С–
 void infomemory(Contact* Contacts)
 {
 	if (Contacts == NULL) {
-		printf("Ошибка динамічний масив не був створений!\n");
+		printf("РћС€РёР±РєР° РґРёРЅР°РјС–С‡РЅРёР№ РјР°СЃРёРІ РЅРµ Р±СѓРІ СЃС‚РІРѕСЂРµРЅРёР№!\n");
 	}
 	else {
-		printf("Пам'ять для динамічного масива була розподілена!\n");
+		printf("РџР°Рј'СЏС‚СЊ РґР»СЏ РґРёРЅР°РјС–С‡РЅРѕРіРѕ РјР°СЃРёРІР° Р±СѓР»Р° СЂРѕР·РїРѕРґС–Р»РµРЅР°!\n");
 	}
 }
 
-// Функція для редагування контакту
+// Р¤СѓРЅРєС†С–СЏ РґР»СЏ СЂРµРґР°РіСѓРІР°РЅРЅСЏ РєРѕРЅС‚Р°РєС‚Сѓ
 void editContact(int coun, Contact* Contacts, char pytfiles[])
 {
 	if (coun == 0) {
-		printf("Контактів нема\n");
+		printf("РљРѕРЅС‚Р°РєС‚С–РІ РЅРµРјР°\n");
 	}
 	else {
-		printf("Введіть індекс контакту, який бажаєте редагувати: ");
+		printf("Р’РІРµРґС–С‚СЊ С–РЅРґРµРєСЃ РєРѕРЅС‚Р°РєС‚Сѓ, СЏРєРёР№ Р±Р°Р¶Р°С”С‚Рµ СЂРµРґР°РіСѓРІР°С‚Рё: ");
 		int m = -1, cd;
 		int b;
 		scanf_s("%d", &cd);
@@ -68,53 +68,53 @@ void editContact(int coun, Contact* Contacts, char pytfiles[])
 			}
 		}
 		if (m == -1) {
-			printf("Некоректний індекс контакту.\n");
+			printf("РќРµРєРѕСЂРµРєС‚РЅРёР№ С–РЅРґРµРєСЃ РєРѕРЅС‚Р°РєС‚Сѓ.\n");
 		}
 		else {
 			do {
-				printf("\nОберіть поле для редагування:\n");
-				printf("1. Номер телефону\n");
-				printf("2. Прізвище\n");
-				printf("3. Групу 1\n");
-				printf("4. Групу 2\n");
-				printf("5. Місце роботи\n");
-				printf("6. Електронна адреса\n");
-				printf("0. Завершити редагування\n");
-				printf("Виберіть опцію: ");
+				printf("\nРћР±РµСЂС–С‚СЊ РїРѕР»Рµ РґР»СЏ СЂРµРґР°РіСѓРІР°РЅРЅСЏ:\n");
+				printf("1. РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅСѓ\n");
+				printf("2. РџСЂС–Р·РІРёС‰Рµ\n");
+				printf("3. Р“СЂСѓРїСѓ 1\n");
+				printf("4. Р“СЂСѓРїСѓ 2\n");
+				printf("5. РњС–СЃС†Рµ СЂРѕР±РѕС‚Рё\n");
+				printf("6. Р•Р»РµРєС‚СЂРѕРЅРЅР° Р°РґСЂРµСЃР°\n");
+				printf("0. Р—Р°РІРµСЂС€РёС‚Рё СЂРµРґР°РіСѓРІР°РЅРЅСЏ\n");
+				printf("Р’РёР±РµСЂС–С‚СЊ РѕРїС†С–СЋ: ");
 				scanf_s("%d", &b);
 				switch (b) {
 				case 1:
-					printf("\nВведіть номер телефону: ");
+					printf("\nР’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅСѓ: ");
 					scanf_s("%s", Contacts[m].phoneNumber, N);
 					break;
 				case 2:
-					printf("Введіть прізвище: ");
+					printf("Р’РІРµРґС–С‚СЊ РїСЂС–Р·РІРёС‰Рµ: ");
 					scanf_s("%s", Contacts[m].lastname, N);
 					break;
 				case 3:
-					printf("Введіть назву групи 1 (Родичі, Співробітники, Друзі): ");
+					printf("Р’РІРµРґС–С‚СЊ РЅР°Р·РІСѓ РіСЂСѓРїРё 1 (Р РѕРґРёС‡С–, РЎРїС–РІСЂРѕР±С–С‚РЅРёРєРё, Р”СЂСѓР·С–): ");
 					scanf_s("%s", Contacts[m].groups, N);
 					break;
 				case 4:
-					printf("Введіть назву групи 2 (Родичі, Співробітники, Друзі): ");
+					printf("Р’РІРµРґС–С‚СЊ РЅР°Р·РІСѓ РіСЂСѓРїРё 2 (Р РѕРґРёС‡С–, РЎРїС–РІСЂРѕР±С–С‚РЅРёРєРё, Р”СЂСѓР·С–): ");
 					scanf_s("%s", Contacts[m].groups2, N);
 					break;
 				case 5:
-					printf("Введіть місце роботи: ");
+					printf("Р’РІРµРґС–С‚СЊ РјС–СЃС†Рµ СЂРѕР±РѕС‚Рё: ");
 					scanf_s("%s", Contacts[m].workplace, N);
 					break;
 				case 6:
-					printf("Введіть електронну адресу: ");
+					printf("Р’РІРµРґС–С‚СЊ РµР»РµРєС‚СЂРѕРЅРЅСѓ Р°РґСЂРµСЃСѓ: ");
 					scanf_s("%s", Contacts[m].email, N);
 					break;
 				default:
 					if (b != 0) {
-						printf("Неправильний вибір номера меню\n");
+						printf("РќРµРїСЂР°РІРёР»СЊРЅРёР№ РІРёР±С–СЂ РЅРѕРјРµСЂР° РјРµРЅСЋ\n");
 					}
 					break;
 				}
 			} while (b != 0);
-			openFile("w+", pytfiles); // запис контактів у файл
+			openFile("w+", pytfiles); // Р·Р°РїРёСЃ РєРѕРЅС‚Р°РєС‚С–РІ Сѓ С„Р°Р№Р»
 			for (int n = 0; n < coun; n++) {
 				fprintf(fp, "\n%d ", Contacts[n].num);
 				fprintf(fp, "%s ", Contacts[n].phoneNumber);
@@ -129,13 +129,13 @@ void editContact(int coun, Contact* Contacts, char pytfiles[])
 	}
 }
 
-// Функція для відкриття файлу
+// Р¤СѓРЅРєС†С–СЏ РґР»СЏ РІС–РґРєСЂРёС‚С‚СЏ С„Р°Р№Р»Сѓ
 int openFile(const char mode[], const char file[])
 {
 	fopen_s(&fp, file, mode);
 	if (!fp)
 	{
-		puts("Не вдалося відкрити файл \n");
+		puts("РќРµ РІРґР°Р»РѕСЃСЏ РІС–РґРєСЂРёС‚Рё С„Р°Р№Р» \n");
 		return 0;
 	}
 	else
@@ -143,7 +143,7 @@ int openFile(const char mode[], const char file[])
 
 }
 
-// Функція для зчитування контактів з файлу
+// Р¤СѓРЅРєС†С–СЏ РґР»СЏ Р·С‡РёС‚СѓРІР°РЅРЅСЏ РєРѕРЅС‚Р°РєС‚С–РІ Р· С„Р°Р№Р»Сѓ
 int scanContact(Contact* Contacts, char pytfiles[], int luk) {
 	openFile("r", pytfiles);
 	int readcont = 0;
@@ -165,7 +165,7 @@ int scanContact(Contact* Contacts, char pytfiles[], int luk) {
 	return readcont;
 }
 
-// Функція для додавання контакту
+// Р¤СѓРЅРєС†С–СЏ РґР»СЏ РґРѕРґР°РІР°РЅРЅСЏ РєРѕРЅС‚Р°РєС‚Сѓ
 int addContact(Contact* Contacts, int coun, char pytfiles[]) {
 	int cus = 0;
 	char c[N];
@@ -176,15 +176,15 @@ int addContact(Contact* Contacts, int coun, char pytfiles[]) {
 		}
 	}
 	Contacts[coun].num = cus + 1;
-	printf("\nВведіть номер телефону (обов'язково): ");
+	printf("\nР’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅСѓ (РѕР±РѕРІ'СЏР·РєРѕРІРѕ): ");
 	scanf_s("%s", Contacts[coun].phoneNumber, N);
-	printf("Введіть прізвище (обов'язково): ");
+	printf("Р’РІРµРґС–С‚СЊ РїСЂС–Р·РІРёС‰Рµ (РѕР±РѕРІ'СЏР·РєРѕРІРѕ): ");
 	scanf_s("%s", Contacts[coun].lastname, N);
 	do {
-		printf("Введіть групу 1 (Родичі, Співробітники, Друзі або 1 для пропуску): ");
+		printf("Р’РІРµРґС–С‚СЊ РіСЂСѓРїСѓ 1 (Р РѕРґРёС‡С–, РЎРїС–РІСЂРѕР±С–С‚РЅРёРєРё, Р”СЂСѓР·С– Р°Р±Рѕ 1 РґР»СЏ РїСЂРѕРїСѓСЃРєСѓ): ");
 		scanf_s("%s", c, N);
 		if (strstr("-", c) != NULL) {
-			puts("Введення '-' неможливе, оскільки це позначення пустого поля. Будь ласка, введіть інше значення:");
+			puts("Р’РІРµРґРµРЅРЅСЏ '-' РЅРµРјРѕР¶Р»РёРІРµ, РѕСЃРєС–Р»СЊРєРё С†Рµ РїРѕР·РЅР°С‡РµРЅРЅСЏ РїСѓСЃС‚РѕРіРѕ РїРѕР»СЏ. Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С–РЅС€Рµ Р·РЅР°С‡РµРЅРЅСЏ:");
 		}
 	} while (strstr("-", c) != NULL);
 	if (strstr("1", c) != NULL) {
@@ -195,10 +195,10 @@ int addContact(Contact* Contacts, int coun, char pytfiles[]) {
 		strcpy_s(Contacts[coun].groups, N, c);
 	}
 	do {
-		printf("Введіть групу 2 (Родичі, Співробітники, Друзі або 1 для пропуску): ");
+		printf("Р’РІРµРґС–С‚СЊ РіСЂСѓРїСѓ 2 (Р РѕРґРёС‡С–, РЎРїС–РІСЂРѕР±С–С‚РЅРёРєРё, Р”СЂСѓР·С– Р°Р±Рѕ 1 РґР»СЏ РїСЂРѕРїСѓСЃРєСѓ): ");
 		scanf_s("%s", c, N);
 		if (strstr("-", c) != NULL) {
-			puts("Введення '-' неможливе, оскільки це позначення пустого поля. Будь ласка, введіть інше значення:");
+			puts("Р’РІРµРґРµРЅРЅСЏ '-' РЅРµРјРѕР¶Р»РёРІРµ, РѕСЃРєС–Р»СЊРєРё С†Рµ РїРѕР·РЅР°С‡РµРЅРЅСЏ РїСѓСЃС‚РѕРіРѕ РїРѕР»СЏ. Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С–РЅС€Рµ Р·РЅР°С‡РµРЅРЅСЏ:");
 		}
 	} while (strstr("-", c) != NULL);
 	if (strstr("1", c) != NULL) {
@@ -209,10 +209,10 @@ int addContact(Contact* Contacts, int coun, char pytfiles[]) {
 		strcpy_s(Contacts[coun].groups2, N, c);
 	}
 	do {
-		printf("Введіть місце роботи (або 1 для пропуску): ");
+		printf("Р’РІРµРґС–С‚СЊ РјС–СЃС†Рµ СЂРѕР±РѕС‚Рё (Р°Р±Рѕ 1 РґР»СЏ РїСЂРѕРїСѓСЃРєСѓ): ");
 		scanf_s("%s", c, N);
 		if (strstr("-", c) != NULL) {
-			puts("Введення '-' неможливе, оскільки це позначення пустого поля. Будь ласка, введіть інше значення:");
+			puts("Р’РІРµРґРµРЅРЅСЏ '-' РЅРµРјРѕР¶Р»РёРІРµ, РѕСЃРєС–Р»СЊРєРё С†Рµ РїРѕР·РЅР°С‡РµРЅРЅСЏ РїСѓСЃС‚РѕРіРѕ РїРѕР»СЏ. Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С–РЅС€Рµ Р·РЅР°С‡РµРЅРЅСЏ:");
 		}
 	} while (strstr("-", c) != NULL);
 	if (strstr("1", c) != NULL) {
@@ -223,10 +223,10 @@ int addContact(Contact* Contacts, int coun, char pytfiles[]) {
 		strcpy_s(Contacts[coun].workplace, N, c);
 	}
 	do {
-		printf("Введіть Ел. Адресу (або 1 для пропуску): ");
+		printf("Р’РІРµРґС–С‚СЊ Р•Р». РђРґСЂРµСЃСѓ (Р°Р±Рѕ 1 РґР»СЏ РїСЂРѕРїСѓСЃРєСѓ): ");
 		scanf_s("%s", c, N);
 		if (strstr("-", c) != NULL) {
-			puts("Введення '-' неможливе, оскільки це позначення пустого поля. Будь ласка, введіть інше значення:");
+			puts("Р’РІРµРґРµРЅРЅСЏ '-' РЅРµРјРѕР¶Р»РёРІРµ, РѕСЃРєС–Р»СЊРєРё С†Рµ РїРѕР·РЅР°С‡РµРЅРЅСЏ РїСѓСЃС‚РѕРіРѕ РїРѕР»СЏ. Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С–РЅС€Рµ Р·РЅР°С‡РµРЅРЅСЏ:");
 		}
 	} while (strstr("-", c) != NULL);
 	if (strstr("1", c) != NULL) {
@@ -247,28 +247,28 @@ int addContact(Contact* Contacts, int coun, char pytfiles[]) {
 	fclose(fp);
 }
 
-// Функція для виведення інформації про контакти
+// Р¤СѓРЅРєС†С–СЏ РґР»СЏ РІРёРІРµРґРµРЅРЅСЏ С–РЅС„РѕСЂРјР°С†С–С— РїСЂРѕ РєРѕРЅС‚Р°РєС‚Рё
 int infoContact(Contact* Contacts, int coun) { 
 	if (coun == 0) {
-		printf("Контактів нема \n");
+		printf("РљРѕРЅС‚Р°РєС‚С–РІ РЅРµРјР° \n");
 	}
 	else {
-		printf("\nІнформація про контакт:\n");
-		printf("|№ контакту|  Номер телефону  |   Прізвище    |             Група             |    Місце роботи    |     Ел. Адреса \n");
+		printf("\nР†РЅС„РѕСЂРјР°С†С–СЏ РїСЂРѕ РєРѕРЅС‚Р°РєС‚:\n");
+		printf("|в„– РєРѕРЅС‚Р°РєС‚Сѓ|  РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅСѓ  |   РџСЂС–Р·РІРёС‰Рµ    |             Р“СЂСѓРїР°             |    РњС–СЃС†Рµ СЂРѕР±РѕС‚Рё    |     Р•Р». РђРґСЂРµСЃР° \n");
 		for (int i = 0; i < coun; i++) {
-			printf("| №%5d   |%18s| %14s| %13s   %13s | %18s | %10s \n", Contacts[i].num, Contacts[i].phoneNumber, Contacts[i].lastname, Contacts[i].groups, Contacts[i].groups2, Contacts[i].workplace, Contacts[i].email);
+			printf("| в„–%5d   |%18s| %14s| %13s   %13s | %18s | %10s \n", Contacts[i].num, Contacts[i].phoneNumber, Contacts[i].lastname, Contacts[i].groups, Contacts[i].groups2, Contacts[i].workplace, Contacts[i].email);
 		}
 		fclose(fp);
 	}
 }
 
-//Функція для видалення контактів
+//Р¤СѓРЅРєС†С–СЏ РґР»СЏ РІРёРґР°Р»РµРЅРЅСЏ РєРѕРЅС‚Р°РєС‚С–РІ
 int deleteContact(Contact* Contacts, int coun, char pytfiles[]) {
 	if (coun == 0) {
-		printf("Контактів нема\n");
+		printf("РљРѕРЅС‚Р°РєС‚С–РІ РЅРµРјР°\n");
 	}
 	else {
-		printf("Введіть індекс контакту, який бажаєте видалити: ");
+		printf("Р’РІРµРґС–С‚СЊ С–РЅРґРµРєСЃ РєРѕРЅС‚Р°РєС‚Сѓ, СЏРєРёР№ Р±Р°Р¶Р°С”С‚Рµ РІРёРґР°Р»РёС‚Рё: ");
 		int v;
 		int i = -1;
 		scanf_s("%d", &v);
@@ -278,7 +278,7 @@ int deleteContact(Contact* Contacts, int coun, char pytfiles[]) {
 			}
 		}
 		if (i == -1) {
-			printf("Некоректний індекс контакту.\n");
+			printf("РќРµРєРѕСЂРµРєС‚РЅРёР№ С–РЅРґРµРєСЃ РєРѕРЅС‚Р°РєС‚Сѓ.\n");
 		}
 		else {
 			for (i; i < coun; i++) {
@@ -302,152 +302,152 @@ int deleteContact(Contact* Contacts, int coun, char pytfiles[]) {
 	}
 }
 
-// Функція для пошуку контактів
+// Р¤СѓРЅРєС†С–СЏ РґР»СЏ РїРѕС€СѓРєСѓ РєРѕРЅС‚Р°РєС‚С–РІ
 void searchContact(Contact* Contacts, int coun) {
 	if (coun == 0) {
-		printf("Контактів немає\n");
+		printf("РљРѕРЅС‚Р°РєС‚С–РІ РЅРµРјР°С”\n");
 	}
 	else {
-		printf("\n1) Номер телефона\n");
-		printf("2) Прізвище\n");
-		printf("3) Групи\n");
-		printf("4) Місце роботи\n");
-		printf("Для вихода із цього меню введіть 0\n");
+		printf("\n1) РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°\n");
+		printf("2) РџСЂС–Р·РІРёС‰Рµ\n");
+		printf("3) Р“СЂСѓРїРё\n");
+		printf("4) РњС–СЃС†Рµ СЂРѕР±РѕС‚Рё\n");
+		printf("Р”Р»СЏ РІРёС…РѕРґР° С–Р· С†СЊРѕРіРѕ РјРµРЅСЋ РІРІРµРґС–С‚СЊ 0\n");
 		int r, h;
 		int v;
-		printf("Виберіть критерію для пошука: ");
+		printf("Р’РёР±РµСЂС–С‚СЊ РєСЂРёС‚РµСЂС–СЋ РґР»СЏ РїРѕС€СѓРєР°: ");
 		scanf_s("%d", &r);
 		switch (r)
 		{
 		case 1:
 			do {
-				printf("Введіть номер телефону: ");
+				printf("Р’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅСѓ: ");
 				char sur[N];
 				scanf_s("%s", sur, N);
 
 				int foundPhoneNumber = 0;
-				printf("|№ контакту|  Номер телефону  |   Прізвище    |             Група             |    Місце роботи    |     Ел. Адреса \n");
+				printf("|в„– РєРѕРЅС‚Р°РєС‚Сѓ|  РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅСѓ  |   РџСЂС–Р·РІРёС‰Рµ    |             Р“СЂСѓРїР°             |    РњС–СЃС†Рµ СЂРѕР±РѕС‚Рё    |     Р•Р». РђРґСЂРµСЃР° \n");
 				for (h = 0; h < coun; h++) {
 					if (strstr(Contacts[h].phoneNumber, sur) != NULL) {
-						printf("| №%5d   |%18s| %14s| %13s   %13s | %18s | %10s\n", Contacts[h].num, Contacts[h].phoneNumber, Contacts[h].lastname, Contacts[h].groups, Contacts[h].groups2, Contacts[h].workplace, Contacts[h].email);
+						printf("| в„–%5d   |%18s| %14s| %13s   %13s | %18s | %10s\n", Contacts[h].num, Contacts[h].phoneNumber, Contacts[h].lastname, Contacts[h].groups, Contacts[h].groups2, Contacts[h].workplace, Contacts[h].email);
 						foundPhoneNumber = 1;
 					}
 
 				}
 				if (foundPhoneNumber == 0) {
-					printf("Контакт не знайдено\n");
+					printf("РљРѕРЅС‚Р°РєС‚ РЅРµ Р·РЅР°Р№РґРµРЅРѕ\n");
 				}
 
-				printf("\nЧи бажаєте здійснити пошук знову? 1 - так 0 - ні\n");
+				printf("\nР§Рё Р±Р°Р¶Р°С”С‚Рµ Р·РґС–Р№СЃРЅРёС‚Рё РїРѕС€СѓРє Р·РЅРѕРІСѓ? 1 - С‚Р°Рє 0 - РЅС–\n");
 				scanf_s("%d", &v);
 			} while (v != 0);
 			break;
 		case 2:
 			do {
-				printf("Введіть прізвище: ");
+				printf("Р’РІРµРґС–С‚СЊ РїСЂС–Р·РІРёС‰Рµ: ");
 				char sur2[N];
 				scanf_s("%s", sur2, N);
 				int foundSecondName = 0;
-				printf("|№ контакту|  Номер телефону  |   Прізвище    |             Група             |    Місце роботи    |     Ел. Адреса \n");
+				printf("|в„– РєРѕРЅС‚Р°РєС‚Сѓ|  РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅСѓ  |   РџСЂС–Р·РІРёС‰Рµ    |             Р“СЂСѓРїР°             |    РњС–СЃС†Рµ СЂРѕР±РѕС‚Рё    |     Р•Р». РђРґСЂРµСЃР° \n");
 				for (h = 0; h < coun; h++) {
 					if (strstr(Contacts[h].lastname, sur2) != NULL) {
-						printf("| №%5d   |%18s| %14s| %13s   %13s | %18s | %10s\n", Contacts[h].num, Contacts[h].phoneNumber, Contacts[h].lastname, Contacts[h].groups, Contacts[h].groups2, Contacts[h].workplace, Contacts[h].email);
+						printf("| в„–%5d   |%18s| %14s| %13s   %13s | %18s | %10s\n", Contacts[h].num, Contacts[h].phoneNumber, Contacts[h].lastname, Contacts[h].groups, Contacts[h].groups2, Contacts[h].workplace, Contacts[h].email);
 						foundSecondName = 1;
 					}
 				}
 				if (foundSecondName == 0) {
-					printf("Прізвище контакта не знайдено\n");
+					printf("РџСЂС–Р·РІРёС‰Рµ РєРѕРЅС‚Р°РєС‚Р° РЅРµ Р·РЅР°Р№РґРµРЅРѕ\n");
 				}
 
-				printf("\nЧи бажаєте здійснити пошук знову? 1 - так 0 - ні\n");
+				printf("\nР§Рё Р±Р°Р¶Р°С”С‚Рµ Р·РґС–Р№СЃРЅРёС‚Рё РїРѕС€СѓРє Р·РЅРѕРІСѓ? 1 - С‚Р°Рє 0 - РЅС–\n");
 				scanf_s("%d", &v);
 			} while (v != 0);
 			break;
 		case 3:
 			do {
-				printf("Введіть групу (Родичі, Співробітники, Друзі): ");
+				printf("Р’РІРµРґС–С‚СЊ РіСЂСѓРїСѓ (Р РѕРґРёС‡С–, РЎРїС–РІСЂРѕР±С–С‚РЅРёРєРё, Р”СЂСѓР·С–): ");
 				char sur3[N];
 				scanf_s("%s", sur3, N);
 				if (strstr("-", sur3) != NULL) {
-					printf("Групу контактів не знайдено\n");
+					printf("Р“СЂСѓРїСѓ РєРѕРЅС‚Р°РєС‚С–РІ РЅРµ Р·РЅР°Р№РґРµРЅРѕ\n");
 				}
 				else {
 					int foundGroup = 0;
-					printf("|№ контакту|  Номер телефону  |   Прізвище    |             Група             |    Місце роботи    |     Ел. Адреса \n");
+					printf("|в„– РєРѕРЅС‚Р°РєС‚Сѓ|  РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅСѓ  |   РџСЂС–Р·РІРёС‰Рµ    |             Р“СЂСѓРїР°             |    РњС–СЃС†Рµ СЂРѕР±РѕС‚Рё    |     Р•Р». РђРґСЂРµСЃР° \n");
 					for (h = 0; h < coun; h++) {
 						if (strstr(Contacts[h].groups, sur3) != NULL || strstr(Contacts[h].groups2, sur3) != NULL) {
-							printf("| №%5d   |%18s| %14s| %13s   %13s | %18s | %10s\n", Contacts[h].num, Contacts[h].phoneNumber, Contacts[h].lastname, Contacts[h].groups, Contacts[h].groups2, Contacts[h].workplace, Contacts[h].email);
+							printf("| в„–%5d   |%18s| %14s| %13s   %13s | %18s | %10s\n", Contacts[h].num, Contacts[h].phoneNumber, Contacts[h].lastname, Contacts[h].groups, Contacts[h].groups2, Contacts[h].workplace, Contacts[h].email);
 							foundGroup = 1;
 						}
 					}
 					if (foundGroup == 0) {
-						printf("Групу контактів не знайдено\n");
+						printf("Р“СЂСѓРїСѓ РєРѕРЅС‚Р°РєС‚С–РІ РЅРµ Р·РЅР°Р№РґРµРЅРѕ\n");
 					}
 				}
-				printf("\nЧи бажаєте здійснити пошук знову? 1 - так 0 - ні\n");
+				printf("\nР§Рё Р±Р°Р¶Р°С”С‚Рµ Р·РґС–Р№СЃРЅРёС‚Рё РїРѕС€СѓРє Р·РЅРѕРІСѓ? 1 - С‚Р°Рє 0 - РЅС–\n");
 				scanf_s("%d", &v);
 			} while (v != 0);
 			break;
 		case 4:
 			do {
-				printf("Введіть місце роботи: ");
+				printf("Р’РІРµРґС–С‚СЊ РјС–СЃС†Рµ СЂРѕР±РѕС‚Рё: ");
 				char sur4[N];
 				scanf_s("%s", sur4, N);
 				if (strstr("-", sur4) != NULL) {
-					printf("Місце роботи контакта не знайдено\n");
+					printf("РњС–СЃС†Рµ СЂРѕР±РѕС‚Рё РєРѕРЅС‚Р°РєС‚Р° РЅРµ Р·РЅР°Р№РґРµРЅРѕ\n");
 				}
 				else {
 					int foundWorkPlace = 0;
-					printf("|№ контакту|  Номер телефону  |   Прізвище    |             Група             |    Місце роботи    |     Ел. Адреса \n");
+					printf("|в„– РєРѕРЅС‚Р°РєС‚Сѓ|  РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅСѓ  |   РџСЂС–Р·РІРёС‰Рµ    |             Р“СЂСѓРїР°             |    РњС–СЃС†Рµ СЂРѕР±РѕС‚Рё    |     Р•Р». РђРґСЂРµСЃР° \n");
 					for (h = 0; h < coun; h++) {
 						if (strstr(Contacts[h].workplace, sur4) != NULL) {
-							printf("| №%5d   |%18s| %14s| %13s   %13s | %18s | %10s\n", Contacts[h].num, Contacts[h].phoneNumber, Contacts[h].lastname, Contacts[h].groups, Contacts[h].groups2, Contacts[h].workplace, Contacts[h].email);
+							printf("| в„–%5d   |%18s| %14s| %13s   %13s | %18s | %10s\n", Contacts[h].num, Contacts[h].phoneNumber, Contacts[h].lastname, Contacts[h].groups, Contacts[h].groups2, Contacts[h].workplace, Contacts[h].email);
 							foundWorkPlace = 1;
 
 						}
 					}
 					if (foundWorkPlace == 0) {
-						printf("Місце роботи контакта не знайдено\n");
+						printf("РњС–СЃС†Рµ СЂРѕР±РѕС‚Рё РєРѕРЅС‚Р°РєС‚Р° РЅРµ Р·РЅР°Р№РґРµРЅРѕ\n");
 					}
 				}
-				printf("\nЧи бажаєте здійснити пошук знову? 1 - так 0 - ні\n");
+				printf("\nР§Рё Р±Р°Р¶Р°С”С‚Рµ Р·РґС–Р№СЃРЅРёС‚Рё РїРѕС€СѓРє Р·РЅРѕРІСѓ? 1 - С‚Р°Рє 0 - РЅС–\n");
 				scanf_s("%d", &v);
 			} while (v != 0);
 			break;
 		default:
-			printf("Неправильний вибір номера меню\n");
+			printf("РќРµРїСЂР°РІРёР»СЊРЅРёР№ РІРёР±С–СЂ РЅРѕРјРµСЂР° РјРµРЅСЋ\n");
 		}
 	}
 }
 
-// Функція для сортування контактів за прізвищем
+// Р¤СѓРЅРєС†С–СЏ РґР»СЏ СЃРѕСЂС‚СѓРІР°РЅРЅСЏ РєРѕРЅС‚Р°РєС‚С–РІ Р·Р° РїСЂС–Р·РІРёС‰РµРј
 void sortContact(Contact* Contacts, int coun) { 
 	char* parr;
 	if (coun == 0) {
-		printf("Контактів нема\n");
+		printf("РљРѕРЅС‚Р°РєС‚С–РІ РЅРµРјР°\n");
 	}
 	else {
-		printf("\nІнформація про контакт:\n");
-		printf("|№ контакту|  Номер телефону  |   Прізвище    |             Група             |    Місце роботи    |     Ел. Адреса \n");
+		printf("\nР†РЅС„РѕСЂРјР°С†С–СЏ РїСЂРѕ РєРѕРЅС‚Р°РєС‚:\n");
+		printf("|в„– РєРѕРЅС‚Р°РєС‚Сѓ|  РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅСѓ  |   РџСЂС–Р·РІРёС‰Рµ    |             Р“СЂСѓРїР°             |    РњС–СЃС†Рµ СЂРѕР±РѕС‚Рё    |     Р•Р». РђРґСЂРµСЃР° \n");
 		for (int q = 192; q <= 255; q++) {
 			for (int s = 0; s < coun; s++) {
 				parr = Contacts[s].lastname;
 				if ((char)q == parr[0]) {
-					printf("| №%5d   |%18s| %14s| %13s   %13s | %18s | %10s\n", Contacts[s].num, Contacts[s].phoneNumber, Contacts[s].lastname, Contacts[s].groups, Contacts[s].groups2, Contacts[s].workplace, Contacts[s].email);
+					printf("| в„–%5d   |%18s| %14s| %13s   %13s | %18s | %10s\n", Contacts[s].num, Contacts[s].phoneNumber, Contacts[s].lastname, Contacts[s].groups, Contacts[s].groups2, Contacts[s].workplace, Contacts[s].email);
 				}
 			}
 		}
 	}
 }
 
-// Головна функція програми
+// Р“РѕР»РѕРІРЅР° С„СѓРЅРєС†С–СЏ РїСЂРѕРіСЂР°РјРё
 int main(int argc, char* argv[]) {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	char pytfiles[N];
 	int luk;
 	if (argc == 1) {
-		puts("Будь ласка, введіть шлях до файлу, де зберігаються контакти.");
+		puts("Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ С€Р»СЏС… РґРѕ С„Р°Р№Р»Сѓ, РґРµ Р·Р±РµСЂС–РіР°СЋС‚СЊСЃСЏ РєРѕРЅС‚Р°РєС‚Рё.");
 		scanf_s("%s", pytfiles, N);
 		if (openFile("r", pytfiles) == NULL) {
 			exit(1);
@@ -461,7 +461,7 @@ int main(int argc, char* argv[]) {
 	}
 	fclose(fp);
 	do {
-		puts("Будь ласка, введіть кількість контактів, для яких буде виділено пам'ять.(рек. більше 30)");
+		puts("Р‘СѓРґСЊ Р»Р°СЃРєР°, РІРІРµРґС–С‚СЊ РєС–Р»СЊРєС–СЃС‚СЊ РєРѕРЅС‚Р°РєС‚С–РІ, РґР»СЏ СЏРєРёС… Р±СѓРґРµ РІРёРґС–Р»РµРЅРѕ РїР°Рј'СЏС‚СЊ.(СЂРµРє. Р±С–Р»СЊС€Рµ 30)");
 		scanf_s("%d", &luk);
 	} while (luk < 1);
 
@@ -474,22 +474,22 @@ int main(int argc, char* argv[]) {
 	int coun = 0;
 	do {
 		coun = scanContact(Contacts, pytfiles, luk);
-		printf("\nМеню телефонної книги:\n");
-		printf("1. Додати контакт\n");
-		printf("2. Показати інформацію про контакт\n");
-		printf("3. Редагувати інформацію контакту\n");
-		printf("4. Видалити контакт\n");
-		printf("5. Пошук контакту\n");
-		printf("6. Сортурування контакту (за прізвищем)\n");
-		printf("0. Вихід\n");
-		printf("Виберіть опцію: ");
+		printf("\nРњРµРЅСЋ С‚РµР»РµС„РѕРЅРЅРѕС— РєРЅРёРіРё:\n");
+		printf("1. Р”РѕРґР°С‚Рё РєРѕРЅС‚Р°РєС‚\n");
+		printf("2. РџРѕРєР°Р·Р°С‚Рё С–РЅС„РѕСЂРјР°С†С–СЋ РїСЂРѕ РєРѕРЅС‚Р°РєС‚\n");
+		printf("3. Р РµРґР°РіСѓРІР°С‚Рё С–РЅС„РѕСЂРјР°С†С–СЋ РєРѕРЅС‚Р°РєС‚Сѓ\n");
+		printf("4. Р’РёРґР°Р»РёС‚Рё РєРѕРЅС‚Р°РєС‚\n");
+		printf("5. РџРѕС€СѓРє РєРѕРЅС‚Р°РєС‚Сѓ\n");
+		printf("6. РЎРѕСЂС‚СѓСЂСѓРІР°РЅРЅСЏ РєРѕРЅС‚Р°РєС‚Сѓ (Р·Р° РїСЂС–Р·РІРёС‰РµРј)\n");
+		printf("0. Р’РёС…С–Рґ\n");
+		printf("Р’РёР±РµСЂС–С‚СЊ РѕРїС†С–СЋ: ");
 		scanf_s("%d", &c);
 		switch (c)
 		{
 		case 0: return 0; break;
 		case 1:
 			if (luk == coun) {
-				printf("\nПомилка: ви виділили пам'ять тільки для %d контактів, тому додавання більшої кількості неможливе,\nкраще перезапустіть програму і введіть більше число для розподілу пам'яті.\n", luk);
+				printf("\nРџРѕРјРёР»РєР°: РІРё РІРёРґС–Р»РёР»Рё РїР°Рј'СЏС‚СЊ С‚С–Р»СЊРєРё РґР»СЏ %d РєРѕРЅС‚Р°РєС‚С–РІ, С‚РѕРјСѓ РґРѕРґР°РІР°РЅРЅСЏ Р±С–Р»СЊС€РѕС— РєС–Р»СЊРєРѕСЃС‚С– РЅРµРјРѕР¶Р»РёРІРµ,\nРєСЂР°С‰Рµ РїРµСЂРµР·Р°РїСѓСЃС‚С–С‚СЊ РїСЂРѕРіСЂР°РјСѓ С– РІРІРµРґС–С‚СЊ Р±С–Р»СЊС€Рµ С‡РёСЃР»Рѕ РґР»СЏ СЂРѕР·РїРѕРґС–Р»Сѓ РїР°Рј'СЏС‚С–.\n", luk);
 			}
 			else {
 				addContact(Contacts, coun, pytfiles);
@@ -511,12 +511,10 @@ int main(int argc, char* argv[]) {
 			sortContact(Contacts, coun);
 			break;
 		default:
-			printf("Неправильний вибір номера меню\n");
+			printf("РќРµРїСЂР°РІРёР»СЊРЅРёР№ РІРёР±С–СЂ РЅРѕРјРµСЂР° РјРµРЅСЋ\n");
 			break;
 		}
 	} while (c != 0);
-	free(Contacts); // Звільнення пам'яті, виділеної для масиву контактів
+	free(Contacts); // Р—РІС–Р»СЊРЅРµРЅРЅСЏ РїР°Рј'СЏС‚С–, РІРёРґС–Р»РµРЅРѕС— РґР»СЏ РјР°СЃРёРІСѓ РєРѕРЅС‚Р°РєС‚С–РІ
 	return 0;
 }
-
-
